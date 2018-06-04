@@ -9,6 +9,16 @@ public:
     ~Player(){}
     void move(int _x, int _y=1);
         //direction =1,2,3,4 for 上下左右
+    void setstate(bool x){
+        state = x ;
+    }
+    bool getstate(){
+        return this->state;
+    }
+
+private:
+    bool state = 1;
+
 };
 
 #endif // PLAYER_H

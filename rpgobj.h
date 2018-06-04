@@ -44,7 +44,7 @@ public:
     string getObjType() const{return this->_icon.getTypeName();}//返回类名
 protected:
     QImage _pic;
-    int _pos_x, _pos_y;//该物体在游戏中当前位置（左上角坐标）
+    int _pos_x = 0, _pos_y= 0;//该物体在游戏中当前位置（左上角坐标）
     ICON _icon;//可以从ICON中获取对象的素材，尺寸等信息
 
     // the basic information of the role

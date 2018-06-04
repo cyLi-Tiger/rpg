@@ -4,12 +4,13 @@
 #include <QMainWindow>
 #include <QImage>
 #include <QPainter>
-#include<QKeyEvent>
+#include <QKeyEvent>
+#include <vector>
 #include "rpgobj.h"
 #include "world.h"
 #include "player.h"
-#include<QTime>
-#include<QTimer>
+#include <QTime>
+#include <QTimer>
 namespace Ui {
 class MW1;
 }
@@ -25,11 +26,13 @@ public:
     void keyPressEvent(QKeyEvent *);
     void female_choose();
     void male_choose();
-//protected slots:
-  //  void randomMove();//响应时钟事件的函数
+protected slots:
+    void randommove();//响应时钟事件的函数
 private:
     Ui::MW1 *ui;
     World _game;
+    vector<Rpgobj> obj;
+    //obj.reserve(3);//可能会是报错点
     QTimer *timer;
     static int flag;
         //时钟，控制玩家移动频率

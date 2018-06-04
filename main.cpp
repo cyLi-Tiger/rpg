@@ -5,7 +5,6 @@
 fstream error;
 fstream write;
 write_in draw;
-
 bool man=true;
 int main(int argc, char *argv[])
 {
@@ -14,8 +13,9 @@ int main(int argc, char *argv[])
 //    w.show();
 //    write.open("C:\\Users\\123213\\Desktop\\map.txt",ios::in);
 //    if(write.peek()==EOF){
-      draw.write_all("/Users/air/desktop/map.txt");
     //}
+
+    draw.write_all("/Users/air/desktop/castle.txt");
     MW1 mw;
     mw.show();
 
