@@ -7,7 +7,7 @@ extern fstream write;
 
 void write_in::write_player(string fileName){
      write.open(fileName.c_str(),ios::app);
-     write<<"player "<<5<<" "<<5<<endl;
+     write<<"player "<<10<<" "<<5<<endl;
      write.close();
 }
 

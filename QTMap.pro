@@ -29,7 +29,9 @@ SOURCES += main.cpp\
     rpgobj.cpp \
     player.cpp \
     world.cpp \
-    write_in.cpp
+    write_in.cpp \
+    rival.cpp \
+    weapon.cpp
 
 HEADERS  += \
     mw1.h \
@@ -37,7 +39,9 @@ HEADERS  += \
     rpgobj.h \
     player.h \
     world.h \
-    write_in.h
+    write_in.h \
+    rival.h \
+    weapon.h
 
 FORMS    += \
     mw1.ui

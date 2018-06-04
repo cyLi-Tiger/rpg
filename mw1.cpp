@@ -18,19 +18,17 @@ MW1::MW1(QWidget *parent) :
     ui(new Ui::MW1)
 {
     ui->setupUi(this);
-
-    //init game world
-    _game.initWorld("/Users/air/desktop/map.txt");//TODO 应该是输入有效的地图文件
+    _game.initWorld("/Users/air/desktop/castle.txt");//TODO 应该是输入有效的地图文件
     //以下是对时钟的初始化
-   /* timer = new QTimer(this);
-    connect(timer,SIGNAL(timeout()),this,SLOT(randomMove()));//timeoutslot()为自定义槽
+    timer = new QTimer(this);
+    connect(timer,SIGNAL(timeout()),this,SLOT(randommove()));//timeoutslot()为自定义槽
         //时钟事件与randomMove函数绑定
     timer->start(100);
-    timer->setInterval(1000);
+    //timer->setInterval(1000);
 
-    qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
+  //  qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
         //设置随机数种子
-        */
+
 }
 
 MW1::~MW1()
@@ -41,15 +39,29 @@ MW1::~MW1()
 void MW1::paintEvent(QPaintEvent *e){
     QPainter *pa;
     pa = new QPainter();
+    if(this->_game.getBattle() == 1) flag =2;
     pa->begin(this);
-    //if(flag != 0){this->_game.show(pa);}
-    if(flag == 0){
+    if(flag == 1){this->_game.show(pa);}
+    if(flag == 0)
+    {
     QImage image = QImage("/Users/air/Desktop/images_res/background.jpg");
-    (*pa).drawImage(rect(),image);}//可以修改 可能可以写一个正方形的函数
-    //这儿不能实现flag=1， 不然会显示不出来；
+    (*pa).drawImage(rect(),image);
+    }  //可以修改 可能可以写一个正方形的函数
+       //这儿不能实现flag=1， 不然会显示不出来；
+
+    if(flag == 2)
+    {
+    QImage image = QImage("/Users/air/Desktop/images_res/battle.jpeg");
+    (*pa).drawImage(rect(),image);
+    flag = 1;
+    this->_game.show(pa);
+    }
     pa->end();
     delete pa;
 }
+
+//void MW1::randomRival(){
+//}
 
 void MW1::keyPressEvent(QKeyEvent *e)
 {
@@ -71,6 +83,12 @@ void MW1::keyPressEvent(QKeyEvent *e)
         {
              this->_game.handlePlayerMove(0,1);
         }
+        else if(e->key() == Qt::Key_K)
+        {
+            this->_game.initWeapon();
+            this->_game.setIfweapon(1);
+            this->_game.addamount();
+        }
         this->repaint();
     }
     if(flag == 0){
@@ -81,6 +99,10 @@ void MW1::keyPressEvent(QKeyEvent *e)
            this->repaint();
         }
     }
+}
+
+void MW1::randommove(){
+    update();
 }
 
 void MW1::female_choose(){
