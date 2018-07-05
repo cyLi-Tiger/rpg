@@ -1,5 +1,6 @@
 #ifndef ICON_H
 #define ICON_H
+
 #include <string>
 #include <map>
 using namespace std;
@@ -8,7 +9,11 @@ using namespace std;
 class ICON
 {
 public:
-    static int GRID_SIZE;//游戏中一格，相当于图片中多少像素
+    static int GRID_SIZE1;//游戏中一格，相当于图片中多少像素
+    static int GRID_SIZE2;
+    static int GRID_SIZE3;\
+    static int GRID_SIZE4;
+
     static map<string,ICON> GAME_ICON_SET;
         //确定各类物体子素材图片的位置，高、宽等数据
     static ICON findICON(string type);
